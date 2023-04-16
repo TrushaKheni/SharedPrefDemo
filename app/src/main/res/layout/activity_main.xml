@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvPrint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="250dp"
+            android:text="Hello World!"
+            android:background="#0B1C7C"
+            android:padding="10dp"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter any text"
+            android:layout_marginVertical="16dp"
+            android:layout_below="@id/tvPrint"
+            android:paddingHorizontal="10dp"
+            android:textSize="18sp"
+            android:id="@+id/etText"/>
+
+        <Button
+            android:id="@+id/btnMove"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Move text"
+            android:layout_below="@+id/etText"
+            android:backgroundTint="#520B5E"
+            android:textColor="@color/white"
+            android:layout_marginVertical="16dp"/>
+
+        <Switch
+            android:id="@+id/onOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnMove"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="16dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_below="@+id/onOff"
+            android:backgroundTint="#520B5E"
+            android:textColor="@color/white"
+            android:layout_marginVertical="16dp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
