@@ -8,21 +8,18 @@ import android.util.Log
 import android.widget.Toast
 import com.example.sharedprefdemo.databinding.ActivityMainBinding
 
+@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
     lateinit var moBinding: ActivityMainBinding
-
+    private val txt=""
+    private val switch=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         moBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(moBinding.root)
 
-        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-        val txt = sharedPreference.getString("text","")
-        Log.e("save data","pref ${ txt}")
-        val switch = sharedPreference.getBoolean("switch",false)
-        Log.e("save data", "pref ${ switch}")
 
-
+        loadData()
         moBinding.tvPrint.text = txt
         moBinding.onOff.isChecked= switch
 
@@ -32,13 +29,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         moBinding.btnSave.setOnClickListener {
-            val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-            val editor = sharedPreference.edit()
-            editor.putString("text",moBinding.tvPrint.text.toString())
-            Log.e("print",moBinding.tvPrint.text.toString())
-            editor.putBoolean("switch",moBinding.onOff.isChecked)
-            editor.apply()
-            Toast.makeText(this,"Save data Successfully...",Toast.LENGTH_SHORT).show()
+           saveData()
         }
+    }
+
+    private fun saveData() {
+        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.putString("text",moBinding.tvPrint.text.toString())
+        Log.e("print",moBinding.tvPrint.text.toString())
+        editor.putBoolean("switch",moBinding.onOff.isChecked)
+        editor.apply()
+        Toast.makeText(this,"Save data Successfully...",Toast.LENGTH_SHORT).show()
+    }
+
+    fun loadData() {
+        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+        val txt = sharedPreference.getString("text","")
+        Log.e("save data","pref ${ txt}")
+        val switch = sharedPreference.getBoolean("switch",false)
+        Log.e("save data", "pref ${ switch}")
+
     }
 }
